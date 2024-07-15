@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Person from './Person';
 import PropTypes from 'prop-types';
+import ApiServce from './ApiServce';
 
 const People = ({persons,setPersons}) => {
 
@@ -23,6 +24,11 @@ const People = ({persons,setPersons}) => {
 
     }));
 
+  }
+
+  const handleApi=(userRandom)=>{
+   
+      setEditedPerson(userRandom);
   }
 
   const handleEdit = (id,e)=>{
@@ -83,8 +89,9 @@ const People = ({persons,setPersons}) => {
           })}
         </div>
       </div>
+      <ApiServce setPerson={handleApi}/>
       {/* Renderizar el formulario para crear o editar los datos de una persona */}
-      <div className='container mt-4 row p-2'>
+      <div className='container row p-2'>
         <h2 className='text-center my-4'> {isEditing ? "Editar": "Crear"} Persona</h2>
         <form className='border border-dark rounded p-4'>
           <div className="mb-3">
